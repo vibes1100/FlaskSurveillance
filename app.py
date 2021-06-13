@@ -1,13 +1,13 @@
 from flask import Flask,request,jsonify, send_file, Response, render_template, redirect
-import face_detection3
-from face_detection3 import VideoCamera
+import face_detection3_copy
+from face_detection3_copy import VideoCamera
 from PIL import Image
 import numpy as np
 import io
 
 app = Flask(__name__)
 
-count=0
+count = 0
 
 @app.route('/',methods=['GET','POST'])
 def index():
@@ -39,7 +39,7 @@ def gen(camera):
     global count
     while True:
         #get camera frame
-        frame, counter = camera.read_frame()
+        frame, counter= camera.read_frame()
         count = counter
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')

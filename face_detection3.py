@@ -97,6 +97,10 @@ class VideoCamera(object):
                 cv2.putText(frame, label, (startX, y),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
         self.counter=counter
+        if counter<=3:
+            cv2.putText(frame, str(counter)+" person(s) in frame", (40,h-40),cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
+        else:
+            cv2.putText(frame, str(counter)+" people in frame", (40,h-40),cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
         # for i in np.arange(0, detections.shape[2]):
         #     confidence = detections[0, 0, i, 2]
         # if confidence > 0.5:
